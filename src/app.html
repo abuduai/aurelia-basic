@@ -1,0 +1,35 @@
+<template>
+  <h1 css="text-align: ${'center'}">${heading}</h1>
+
+  <form css="text-align: ${'center'}" submit.trigger="addTodo()">
+    <input
+      css="height:${'30px'}; font-size: ${'16px'}; border-radius: ${'5px'}; padding-left: ${'8px'}; border-style: ${'solid'}; border: ${'1px solid #4caf50'}"
+      type="text"
+      value.bind="todoDescription"
+    />
+    <button
+      css="padding: ${'9px'}; border-radius: ${'5px'}; position: ${'relative'}; top: ${'-2px'}; background-color: ${'#4caf50'}; color: ${'#fff'}; cursor: ${'pointer'}"
+      type="submit"
+    >
+      Add more Todo
+    </button>
+  </form>
+
+  <ul
+    css="text-align: ${'center'}; list-style: ${'none'}; padding-left: ${'0px'}"
+  >
+    <li repeat.for="todo of todos">
+      <input type="checkbox" checked.bind="todo.done" />
+      <span
+        css="text-decoration: ${todo.done ? 'line-through' : 'none'}; font-size: ${'20px'}; color: ${todo.done ? '#FF0000' : '#000'}"
+        >${todo.description}</span
+      >
+      <button
+        css="padding: ${'9px'}; border-radius: ${'5px'}; position: ${'relative'}; top: ${'-2px'}; background-color: ${'#FF0000'}; color: ${'#FFF'}; cursor: ${'pointer'}"
+        click.trigger="removeTodo(todo)"
+      >
+        Remove
+      </button>
+    </li>
+  </ul>
+</template>
